@@ -17,7 +17,9 @@ public class FileCheckHelper implements Runnable {
 		this.filePath = filePath;
 		
 	}
-	
+	/**
+	 * Checks for the existance of, or sets up the files needed for this application
+	 */
 	@Override
 	public void run() {
 		Logger.info("Checking file: {} in thread: {}", filePath, t.getId());
