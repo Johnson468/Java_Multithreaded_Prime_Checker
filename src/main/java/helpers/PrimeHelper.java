@@ -36,9 +36,10 @@ public class PrimeHelper {
 				//Store the checked number
 				FileWriteHelper fwh1 = new FileWriteHelper(filePath, Constants.TRIED_FILE, n);
 				fwh1.start();
+				//Adds the current number to the tree so it won't be checked in the future
+				tree.insert(n);
 				if (isPrime(n)) {
 					Logger.info("Found prime: " + n);
-					tree.insert(n);
 					//Create a multithreaded write function for the prime numbers
 					FileWriteHelper fwh = new FileWriteHelper(filePath, Constants.PRIME_FILE, n);
 					//Write the number in the file in a seperate thread
@@ -52,13 +53,17 @@ public class PrimeHelper {
 			n+=2;
 		}
 	}
-	
+	/**
+	 * Checks the tree in log(n) time for the number to search for.
+	 * @param n
+	 * @param tree
+	 * @return
+	 */
 	private static boolean hasBeenChecked(int n, AVLTree tree) {
 		return tree.search(n);
 	}
 	public static long modPow(long a, long b, long c)
     {
-		Logger.info(Constants.TRYING, a);
         long res = 1;
         for (int i = 0; i < b; i++)
         {

@@ -184,7 +184,6 @@ import org.pmw.tinylog.Logger;
      {
          if (r != null)
          {
-        	 System.out.println(r.data);
              inorder(r.left);
              inorder(r.right);
          }
@@ -214,6 +213,18 @@ import org.pmw.tinylog.Logger;
              postorder(r.left);             
              postorder(r.right);
          }
-     }     
+     }    
+     public int maxValue() {
+    	return maxValue(root);
+     }
+     private int maxValue(AVLNode r) {
+    	 return r.right != null ? maxValue(r.right) : r.data; 
+     }
+     public int minValue() {
+    	 return minValue(root);
+     }
+     private int minValue(AVLNode r) {
+    	 return r.left != null ? minValue(r.left) : r.data;
+     }
  }
  

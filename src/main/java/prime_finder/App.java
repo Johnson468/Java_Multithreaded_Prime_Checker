@@ -33,7 +33,12 @@ public class App
     	String path = args[1];
     	checkFiles(path);
     	AVLTree tree = setupTree(path);
-    	PrimeHelper.climb(number, path, tree);
+    	if (tree.isEmpty()) {
+    		PrimeHelper.climb(number, path, tree);
+    	} else {
+    		PrimeHelper.climb(tree.maxValue(), path, tree);
+    	}
+    	
     }
     /**
      * Checks or sets up 
